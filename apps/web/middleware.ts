@@ -69,8 +69,9 @@ export const config = {
      * - _next/image (image optimization)
      * - favicon.ico
      * - api routes (they handle their own auth)
+     * - dashboard routes (the standalone dashboard owns its auth boundary)
      * - public assets
      */
-    "/((?!_next/static|_next/image|favicon\\.ico|api/).*)",
+    "/((?!dashboard(?:/|$)|_next/static|_next/image|favicon\\.ico|api/).*)",
   ],
 };
