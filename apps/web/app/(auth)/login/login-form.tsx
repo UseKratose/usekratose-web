@@ -1,14 +1,13 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 import { safeRedirectPath } from "@/lib/navigation-security";
 
 export function LoginForm() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const redirectTo = safeRedirectPath(searchParams.get("redirect"));
 
@@ -16,6 +15,23 @@ export function LoginForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
+
+  useEffect(() => {
+    if (searchParams.has("redirect")) return;
+
+    let active = true;
+    void getSupabaseBrowserClient()
+      .auth.getUser()
+      .then(({ data }) => {
+        if (active && data.user !== null) {
+          window.location.replace("/dashboard");
+        }
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [searchParams]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -34,8 +50,7 @@ export function LoginForm() {
       return;
     }
 
-    router.replace(redirectTo);
-    router.refresh();
+    window.location.assign(redirectTo);
   }
 
   async function handleOAuth(provider: "github") {
