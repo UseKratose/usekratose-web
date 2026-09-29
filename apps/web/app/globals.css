@@ -314,7 +314,8 @@
 
 @media (max-width: 640px) {
   .brand-hero h1 {
-    font-size: clamp(1.85rem, 8vw, 3rem);
+    font-size: clamp(1.4rem, 5.8vw, 2rem);
+    letter-spacing: -0.055em;
   }
 }
 
@@ -1857,10 +1858,17 @@ pre {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(155, 28, 28, 0.1), transparent 38%),
+    #1a1a1a;
 }
 
-.auth-brand {
-  padding: 22px 32px;
+.auth-topbar {
+  height: 82px;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  border-bottom: 1px solid rgba(231, 226, 220, 0.12);
   position: relative;
   z-index: 5;
 }
@@ -1894,7 +1902,7 @@ pre {
   height: 400px;
   top: 20%;
   left: 30%;
-  background: var(--acid);
+  background: #9b1c1c;
   filter: blur(200px);
   opacity: 0.04;
   pointer-events: none;
@@ -2165,8 +2173,8 @@ pre {
 }
 
 .auth-form input:focus {
-  border-color: #708d32;
-  box-shadow: 0 0 0 3px rgba(199, 255, 74, 0.06);
+  border-color: #a68b6b;
+  box-shadow: 0 0 0 3px rgba(166, 139, 107, 0.12);
 }
 
 .auth-form input::placeholder {
@@ -2194,7 +2202,7 @@ pre {
 }
 
 .auth-link.accent:hover {
-  color: #d8ff7a;
+  color: #c95f5f;
 }
 
 .auth-submit {
@@ -3379,5 +3387,41 @@ pre {
   }
   .dashboard-page {
     width: min(100% - 24px, 1240px);
+  }
+}
+
+/* Canonical authentication surface uses the UseKratose brand palette. */
+.auth-shell .button,
+.auth-shell .auth-submit {
+  border-color: #9b1c1c;
+  background: #9b1c1c;
+  box-shadow: 0 12px 32px rgba(155, 28, 28, 0.2);
+}
+
+.auth-shell .button:hover,
+.auth-shell .auth-submit:hover {
+  background: #b22323;
+  box-shadow: 0 15px 38px rgba(155, 28, 28, 0.28);
+}
+
+.auth-shell .eyebrow {
+  color: #d2b18a;
+  border-color: rgba(166, 139, 107, 0.4);
+  background: rgba(166, 139, 107, 0.08);
+}
+
+.auth-shell .pulse {
+  background: #9b1c1c;
+  box-shadow: 0 0 0 5px rgba(155, 28, 28, 0.14);
+}
+
+.auth-shell .oauth-btn:hover {
+  border-color: rgba(166, 139, 107, 0.7);
+}
+
+@media (max-width: 620px) {
+  .auth-topbar {
+    height: 72px;
+    padding: 0 20px;
   }
 }
