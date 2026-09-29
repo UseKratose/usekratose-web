@@ -42,7 +42,7 @@ Required variables:
 - `ALERT_SECRET_ENCRYPTION_KEY`
 - cluster-specific Solana and Solami RPC variables
 - `GEMINI_API_KEY` and `GEMINI_MODEL` when AI review is enabled
-- `GITHUB_APP_ID`, `GITHUB_APP_SLUG`, `GITHUB_APP_PRIVATE_KEY`, `GITHUB_STATE_SECRET`, and `GITHUB_API_VERSION`
+- `GITHUB_APP_ID`, `GITHUB_APP_SLUG`, `GITHUB_APP_PRIVATE_KEY`, `GITHUB_STATE_SECRET`, and `GITHUB_API_VERSION=2022-11-28`
 
 Use the committed `vercel.json` in each project. Never commit production credentials.
 
@@ -73,8 +73,9 @@ Run one monitor per cluster. Apply database migrations before promoting a web re
 ## Release verification
 
 1. Build and test the dashboard, web application, monitor, and packages.
-2. Deploy the dashboard and verify `/dashboard/login` on its deployment origin.
+2. Deploy the dashboard and verify its `/dashboard` base-path build.
 3. Configure the web project's `DASHBOARD_ORIGIN` and deploy the public application.
-4. Verify `/`, `/dashboard/overview`, and authenticated dashboard API operations through the public origin.
-5. Restart the persistent monitor and confirm finalized reconciliation writes a fresh health observation.
-6. Scan Vercel and worker logs for errors before announcing the release.
+4. Verify `/`, `/login`, `/signup`, `/dashboard`, and authenticated dashboard API operations through the public origin.
+5. Confirm `/dashboard/login`, `/dashboard/signup`, and `/dashboard/overview` redirect to their canonical public URLs.
+6. Restart the persistent monitor and confirm finalized reconciliation writes a fresh health observation.
+7. Scan Vercel and worker logs for errors before announcing the release.

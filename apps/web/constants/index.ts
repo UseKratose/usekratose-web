@@ -37,10 +37,10 @@ export const images = {
   lines: "/assets/pricing/lines.svg",
   stars: "/assets/pricing/stars.svg",
   done: "/assets/roadmap/done.svg",
-  roadmap1: "/assets/roadmap/image-1.png",
-  roadmap2: "/assets/roadmap/image-2.png",
-  roadmap3: "/assets/roadmap/image-3.png",
-  roadmap4: "/assets/roadmap/image-4.png",
+  roadmap1: "/assets/roadmap/monitoring.svg",
+  roadmap2: "/assets/roadmap/security-events.svg",
+  roadmap3: "/assets/roadmap/source-intelligence.svg",
+  roadmap4: "/assets/roadmap/protocol-operations.svg",
   notification1: "/assets/notification/image-1.png",
   notification2: "/assets/notification/image-2.png",
   notification3: "/assets/notification/image-3.png",
@@ -52,15 +52,13 @@ export const images = {
   benefitImage2: "/assets/benefits/image-2.png",
 } as const;
 
-const dashboardUrl = process.env.NEXT_PUBLIC_DASHBOARD_URL ?? "http://localhost:3001";
-
 export const navigation = [
   { id: "0", title: "Capabilities", url: "#features", onlyMobile: false },
   { id: "1", title: "How it works", url: "#how-to-use", onlyMobile: false },
   { id: "2", title: "Coverage", url: "#coverage", onlyMobile: false },
   { id: "3", title: "Roadmap", url: "#roadmap", onlyMobile: false },
-  { id: "4", title: "New account", url: `${dashboardUrl}/signup`, onlyMobile: true },
-  { id: "5", title: "Sign in", url: `${dashboardUrl}/login`, onlyMobile: true },
+  { id: "4", title: "New account", url: "/signup", onlyMobile: true },
+  { id: "5", title: "Sign in", url: "/login", onlyMobile: true },
 ] as const;
 
 export const heroIcons = [images.homeSmile, images.file02, images.searchMd, images.plusSquare];

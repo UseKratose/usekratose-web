@@ -42,7 +42,7 @@ const Pricing = (props: Props) => {
         <div className="mt-10 flex justify-center">
           <Link
             className="border-b font-code text-xs font-bold uppercase tracking-wider"
-            href={`${process.env.NEXT_PUBLIC_DASHBOARD_URL ?? "http://localhost:3001"}/signup`}
+            href="/signup"
           >
             Establish your first baseline
           </Link>

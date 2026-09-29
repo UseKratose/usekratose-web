@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <rect width="900" height="600" fill="#151515"/>
+  <rect x="80" y="72" width="740" height="456" rx="28" fill="#1A1A1A" stroke="#A68B6B" stroke-opacity=".5" stroke-width="3"/>
+  <circle cx="125" cy="118" r="8" fill="#9B1C1C"/><circle cx="155" cy="118" r="8" fill="#A68B6B"/><circle cx="185" cy="118" r="8" fill="#E7E2DC"/>
+  <text x="225" y="126" fill="#A68B6B" font-family="monospace" font-size="20">idl/security_v2.json</text>
+  <g font-family="monospace" font-size="22"><text x="120" y="205" fill="#A68B6B">- withdraw</text><text x="120" y="255" fill="#E7E2DC">+ emergencyWithdraw</text><text x="120" y="305" fill="#E7E2DC">+ signer: admin</text><text x="120" y="355" fill="#E7E2DC">+ writable: vault</text></g>
+  <rect x="520" y="180" width="245" height="230" rx="20" fill="#211B1A" stroke="#9B1C1C" stroke-opacity=".55"/>
+  <text x="556" y="225" fill="#A68B6B" font-family="monospace" font-size="18">SOURCE REVISION</text><text x="556" y="280" fill="#E7E2DC" font-family="monospace" font-size="26" font-weight="700">994f…</text><path d="M560 330h160" stroke="#9B1C1C" stroke-width="7"/><text x="556" y="375" fill="#E7E2DC" font-family="monospace" font-size="18">VERIFIED</text>
+  <text x="120" y="470" fill="#A68B6B" font-family="monospace" font-size="18">NORMALIZED IDL · REVIEWABLE SOURCE DIFF</text>
+</svg>

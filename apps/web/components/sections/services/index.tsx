@@ -32,11 +32,12 @@ const Services = (props: Props) => {
             <div className="pointer-events-none absolute left-0 top-0 h-full md:w-3/5 xl:w-auto">
               <Image
                 src={images.service1}
-                alt="smartest ai"
+                alt="Solana program deployment evidence visualization"
                 width={800}
                 height={730}
-                className="size-full object-cover md:object-right"
+                className="size-full object-cover brightness-[0.62] saturate-[0.62] md:object-right"
               />
+              <div className="absolute inset-0 bg-gradient-to-r from-n-8/35 via-n-8/45 to-n-8/95" />
             </div>
 
             <div className="relative z-1 ml-auto max-w-[17rem]">
@@ -61,7 +62,7 @@ const Services = (props: Props) => {
               <div className="absolute inset-0">
                 <Image
                   src={images.service2}
-                  className="size-full object-cover"
+                  className="size-full object-cover brightness-[0.62] saturate-[0.62]"
                   width={630}
                   height={750}
                   alt="robot"
@@ -114,10 +115,10 @@ const Services = (props: Props) => {
               <div className="relative h-80 overflow-hidden rounded-xl bg-n-8 md:h-[25rem]">
                 <Image
                   src={images.service3}
-                  className="size-full object-cover"
+                  className="size-full object-cover brightness-[0.58] saturate-[0.58]"
                   width={520}
                   height={400}
-                  alt="scary robot"
+                  alt="Structured Solana security event evidence"
                 />
 
                 <VideoChatMessage />

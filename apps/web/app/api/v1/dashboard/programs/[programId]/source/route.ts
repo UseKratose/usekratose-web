@@ -139,10 +139,15 @@ export async function POST(
     }
     if (parsed.data.action === "connect-github") {
       const repository = parseGitHubRepositoryUrl(parsed.data.repositoryUrl);
+      const existingInstallationId =
+        parsed.data.installationId ??
+        (await loaded.database.store.getGitHubInstallationForProject(
+          loaded.project.id,
+        ));
       const source = await retrieveGitHubSource({
-        ...(parsed.data.installationId === undefined
+        ...(existingInstallationId === null
           ? {}
-          : { installationId: parsed.data.installationId }),
+          : { installationId: existingInstallationId }),
         repository,
         ...(parsed.data.revision === undefined
           ? {}
@@ -151,7 +156,7 @@ export async function POST(
       const workspace =
         await loaded.database.store.upsertProgramSourceWorkspace({
           baseBranch: source.baseBranch,
-          githubInstallationId: parsed.data.installationId ?? null,
+          githubInstallationId: existingInstallationId,
           programId: loaded.context.program.id,
           projectId: loaded.project.id,
           provider: "github",

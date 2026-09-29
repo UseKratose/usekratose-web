@@ -2,9 +2,6 @@ import Link from "next/link";
 
 import { evidencePrinciples } from "@/constants";
 
-const dashboardUrl =
-  process.env.NEXT_PUBLIC_DASHBOARD_URL ?? "http://localhost:3001";
-
 export default function Hero() {
   return (
     <section className="brand-hero" id="hero">
@@ -27,7 +24,7 @@ export default function Hero() {
           <div className="brand-hero-actions">
             <Link
               className="brand-primary-action"
-              href={`${dashboardUrl}/signup`}
+              href="/signup"
             >
               Start monitoring
             </Link>

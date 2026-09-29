@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <rect width="900" height="600" fill="#151515"/>
+  <g stroke="#A68B6B" stroke-opacity=".14"><path d="M0 120h900M0 240h900M0 360h900M0 480h900M150 0v600M300 0v600M450 0v600M600 0v600M750 0v600"/></g>
+  <rect x="75" y="80" width="750" height="440" rx="28" fill="#1A1A1A" stroke="#A68B6B" stroke-opacity=".5" stroke-width="3"/>
+  <text x="120" y="145" fill="#A68B6B" font-family="monospace" font-size="20">SNAPSHOT DIFF</text>
+  <rect x="120" y="180" width="280" height="210" rx="18" fill="#211B1A" stroke="#A68B6B" stroke-opacity=".4"/>
+  <rect x="500" y="180" width="280" height="210" rx="18" fill="#211B1A" stroke="#9B1C1C" stroke-opacity=".75"/>
+  <text x="150" y="230" fill="#E7E2DC" font-family="monospace" font-size="22">PREVIOUS</text><text x="530" y="230" fill="#E7E2DC" font-family="monospace" font-size="22">CURRENT</text>
+  <text x="150" y="285" fill="#A68B6B" font-family="monospace" font-size="18">hash 39fd…</text><text x="530" y="285" fill="#E7E2DC" font-family="monospace" font-size="18">hash eb848…</text>
+  <text x="150" y="330" fill="#A68B6B" font-family="monospace" font-size="18">slot 501871042</text><text x="530" y="330" fill="#E7E2DC" font-family="monospace" font-size="18">slot 504184158</text>
+  <path d="M425 285h50" stroke="#9B1C1C" stroke-width="8" stroke-linecap="round"/><path d="m458 268 18 17-18 17" fill="none" stroke="#9B1C1C" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="250" y="430" width="400" height="54" rx="27" fill="#9B1C1C"/><text x="315" y="466" fill="#E7E2DC" font-family="monospace" font-size="21" font-weight="700">PROGRAM_UPGRADED · HIGH</text>
+</svg>

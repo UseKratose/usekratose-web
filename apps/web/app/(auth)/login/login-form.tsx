@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 import { safeRedirectPath } from "@/lib/navigation-security";
+import { authRedirectErrorMessage } from "@/lib/auth-errors";
 
 export function LoginForm() {
   const router = useRouter();
@@ -16,6 +17,20 @@ export function LoginForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
+  const redirectErrorHandled = useRef(false);
+
+  useEffect(() => {
+    if (redirectErrorHandled.current) return;
+    redirectErrorHandled.current = true;
+    const redirectError = authRedirectErrorMessage(
+      new URLSearchParams(searchParams.toString()),
+      window.location.hash,
+    );
+    if (redirectError !== null) {
+      setError(redirectError);
+      window.history.replaceState({}, "", `${window.location.pathname}${window.location.search}`);
+    }
+  }, [searchParams]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -40,12 +55,14 @@ export function LoginForm() {
 
   async function handleOAuth(provider: "github" | "google") {
     const supabase = getSupabaseBrowserClient();
-    await supabase.auth.signInWithOAuth({
+    setError(null);
+    const { error: authError } = await supabase.auth.signInWithOAuth({
       provider,
       options: {
         redirectTo: `${window.location.origin}/auth/callback?redirect=${encodeURIComponent(redirectTo)}`,
       },
     });
+    if (authError !== null) setError(authError.message);
   }
 
   return (

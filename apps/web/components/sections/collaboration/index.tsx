@@ -5,6 +5,7 @@ import Image from "next/image";
 import Button from "@/components/atoms/button";
 import { cn } from "@/lib/utils";
 import { LeftCurve, RightCurve } from "@/components/design/collaboration";
+import { BrandLogo } from "@/components/brand-logo";
 
 type Props = {};
 
@@ -25,7 +26,7 @@ const Collaboration = (props: Props) => {
               </li>
             ))}
           </ul>
-          <Button href={`${process.env.NEXT_PUBLIC_DASHBOARD_URL ?? "http://localhost:3001"}/signup`}>Create a workspace</Button>
+          <Button href="/signup">Create a workspace</Button>
         </div>
 
         <div className="mt-4 lg:ml-auto xl:w-[38rem]">
@@ -37,7 +38,7 @@ const Collaboration = (props: Props) => {
             <div className="m-auto flex aspect-square w-60 rounded-full border border-n-6">
               <div className="m-auto aspect-square w-24 rounded-full bg-conic-gradient p-[0.2rem]">
                 <div className="flex h-full items-center justify-center rounded-full bg-n-8">
-                  <span className="font-code text-2xl font-bold text-n-1">K</span>
+                  <BrandLogo className="h-14 w-14" />
                 </div>
               </div>
             </div>

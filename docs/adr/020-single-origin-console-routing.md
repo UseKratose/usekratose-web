@@ -11,8 +11,11 @@ UseKratose keeps the marketing application and authenticated console in separate
 ## Decision
 
 - `apps/web` is the public entry application and owns the production domain.
+- `apps/web` is the only authentication surface and owns `/login`, `/signup`, password recovery, and `/auth/callback`.
 - `apps/dashboard` is built with the fixed `/dashboard` base path.
 - `apps/web` proxies `/dashboard` and `/dashboard/*` to the dashboard deployment through a `beforeFiles` rewrite.
+- `/dashboard` is the console overview. Feature areas use semantic subpaths such as `/dashboard/programs` and `/dashboard/events`; query parameters are reserved for transient UI state, filters, and actions.
+- Legacy `/dashboard/login`, `/dashboard/signup`, and `/dashboard/overview` requests permanently redirect to their canonical routes.
 - `NEXT_PUBLIC_DASHBOARD_URL` points to the public origin plus `/dashboard`; it never exposes the child deployment URL.
 - `DASHBOARD_ORIGIN` is server-only and points to the dashboard deployment origin.
 - Browser-native requests created by the dashboard explicitly include the base path. Next.js `Link`, router, and server redirect APIs retain their built-in base-path behavior.
@@ -21,6 +24,7 @@ UseKratose keeps the marketing application and authenticated console in separate
 ## Consequences
 
 - Marketing and console releases remain independent while public navigation stays same-origin.
+- Users see one branded login and registration flow, regardless of which protected console URL initiated authentication.
 - Authentication cookies and Supabase sessions work through the public domain without cross-origin browser configuration.
 - The dashboard deployment must be deployed before the public web deployment so `DASHBOARD_ORIGIN` can be configured.
 - Shared hosting that only exposes Nginx Unit is not treated as a reliable persistent-worker host. The monitor requires a supervisor such as systemd, Docker, or an equivalent always-on process manager.

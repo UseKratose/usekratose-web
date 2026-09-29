@@ -4,6 +4,8 @@ import "./globals.css";
 import { SiteChrome } from "./site-chrome";
 import { getSession } from "@/lib/auth";
 
+const siteUrl = process.env.NEXT_PUBLIC_MARKETING_URL ?? "https://usekratose.vercel.app";
+
 const developmentServiceWorkerReset = `
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.getRegistrations().then(async (registrations) => {
@@ -23,10 +25,70 @@ if ("serviceWorker" in navigator) {
 `;
 
 export const metadata: Metadata = {
-  description: "Continuous security verification for deployed Solana programs.",
+  metadataBase: new URL(siteUrl),
+  applicationName: "UseKratose",
+  category: "developer tools",
+  creator: "UseKratose",
+  description:
+    "Continuous Solana program security monitoring with deterministic deployment fingerprints, upgrade detection, IDL diffs, and reviewable security events.",
+  keywords: [
+    "Solana security",
+    "Solana program monitoring",
+    "Solana smart contract security",
+    "Solana upgrade monitoring",
+    "Solana program audit",
+    "Solana ProgramData",
+    "Solana IDL diff",
+    "continuous deployment security",
+    "blockchain security monitoring",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  icons: {
+    icon: "/brand/logo-white.png",
+    apple: "/brand/logo-dark.png",
+  },
+  manifest: "/manifest.webmanifest",
+  openGraph: {
+    description:
+      "Certificate transparency and Git-style security diffs for deployed Solana programs.",
+    images: [
+      {
+        alt: "UseKratose continuous Solana program security",
+        height: 630,
+        url: "/opengraph-image",
+        width: 1200,
+      },
+    ],
+    locale: "en_US",
+    siteName: "UseKratose",
+    title: "UseKratose — Continuous Solana Program Security",
+    type: "website",
+    url: "/",
+  },
+  publisher: "UseKratose",
+  robots: {
+    follow: true,
+    googleBot: {
+      follow: true,
+      index: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+    index: true,
+  },
   title: {
-    default: "UseKratose — Verify every Solana upgrade",
+    default: "UseKratose — Continuous Solana Program Security",
     template: "%s — UseKratose",
+  },
+  twitter: {
+    card: "summary_large_image",
+    description:
+      "Certificate transparency and Git-style security diffs for deployed Solana programs.",
+    images: ["/opengraph-image"],
+    title: "UseKratose — Continuous Solana Program Security",
   },
 };
 

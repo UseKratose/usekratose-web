@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import { parseGitHubRepositoryUrl } from "../lib/github-source";
+import {
+  listGitHubInstallationRepositories,
+  parseGitHubRepositoryUrl,
+} from "../lib/github-source";
 import {
   normalizeSourcePath,
   sha256,
@@ -37,5 +40,11 @@ describe("source workspace boundaries", () => {
 
   it("uses deployment-compatible sha256 fingerprints", () => {
     expect(sha256("fixture")).toMatch(/^sha256:[a-f0-9]{64}$/);
+  });
+
+  it("rejects invalid installation IDs before GitHub access", async () => {
+    await expect(listGitHubInstallationRepositories("not-a-number")).rejects.toThrow(
+      "installation ID",
+    );
   });
 });

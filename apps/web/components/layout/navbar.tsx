@@ -17,9 +17,6 @@ type NavigationUser = {
   readonly initials: string;
 };
 
-const dashboardUrl =
-  process.env.NEXT_PUBLIC_DASHBOARD_URL ?? "http://localhost:3001";
-
 function toNavigationUser(user: {
   readonly email?: string;
   readonly user_metadata: Record<string, unknown>;
@@ -170,12 +167,12 @@ const Navbar = () => {
         {user === null ? (
           <>
             <Link
-              href={`${dashboardUrl}/signup`}
+              href="/signup"
               className="landing-button mr-8 hidden text-n-1/50 transition-colors hover:text-n-1 lg:block"
             >
               New account
             </Link>
-            <Button className="hidden lg:flex" href={`${dashboardUrl}/login`}>
+            <Button className="hidden lg:flex" href="/login">
               Sign in
             </Button>
           </>
@@ -204,7 +201,7 @@ const Navbar = () => {
               <div className="landing-profile-menu" role="menu">
                 <span>{user.email}</span>
                 <Link
-                  href={`${dashboardUrl}/overview`}
+                  href="/dashboard"
                   onClick={() => setAccountOpen(false)}
                   role="menuitem"
                 >

@@ -2,9 +2,6 @@ import Link from "next/link";
 
 import { BrandLogo } from "@/components/brand-logo";
 
-const dashboardUrl =
-  process.env.NEXT_PUBLIC_DASHBOARD_URL ?? "http://localhost:3001";
-
 const footerGroups = [
   {
     title: "Platform",
@@ -17,17 +14,17 @@ const footerGroups = [
   {
     title: "Product",
     links: [
-      { href: `${dashboardUrl}/signup`, label: "Create workspace" },
-      { href: `${dashboardUrl}/login`, label: "Sign in" },
-      { href: `${dashboardUrl}/programs?add=1`, label: "Monitor a program" },
+      { href: "/signup", label: "Create workspace" },
+      { href: "/login", label: "Sign in" },
+      { href: "/dashboard/programs?add=1", label: "Monitor a program" },
     ],
   },
   {
     title: "Resources",
     links: [
-      { href: `${dashboardUrl}/docs`, label: "Documentation" },
+      { href: "/dashboard/docs", label: "Documentation" },
       { href: "#roadmap", label: "Roadmap" },
-      { href: `${dashboardUrl}/events`, label: "Security events" },
+      { href: "/dashboard/events", label: "Security events" },
     ],
   },
 ] as const;
@@ -68,7 +65,7 @@ export default function Footer() {
           <div className="brand-footer-cta">
             <span>Protect the next deployment</span>
             <h2>Make every Solana upgrade accountable.</h2>
-            <Link href={`${dashboardUrl}/signup`}>Start monitoring →</Link>
+            <Link href="/signup">Start monitoring →</Link>
           </div>
         </div>
 

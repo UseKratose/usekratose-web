@@ -16,8 +16,6 @@ export function AuthHeader({
 }: {
   readonly user: UserInfo | null;
 }) {
-  const dashboardUrl =
-    process.env.NEXT_PUBLIC_DASHBOARD_URL ?? "http://localhost:3001";
   const router = useRouter();
   const [user, setUser] = useState<UserInfo | null>(initialUser);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -54,10 +52,10 @@ export function AuthHeader({
   if (!user) {
     return (
       <div className="header-auth">
-        <Link className="text-link-nav" href={`${dashboardUrl}/login`}>
+        <Link className="text-link-nav" href="/login">
           Sign in
         </Link>
-        <Link className="button button-small" href={`${dashboardUrl}/signup`}>
+        <Link className="button button-small" href="/signup">
           Get started
         </Link>
       </div>
@@ -83,14 +81,14 @@ export function AuthHeader({
             <div className="user-menu-divider" />
             <Link
               className="user-menu-item"
-              href={`${dashboardUrl}/overview`}
+              href="/dashboard"
               onClick={() => setMenuOpen(false)}
             >
               Security console
             </Link>
             <Link
               className="user-menu-item"
-              href={`${dashboardUrl}/programs?add=1`}
+              href="/dashboard/programs?add=1"
               onClick={() => setMenuOpen(false)}
             >
               Monitor program

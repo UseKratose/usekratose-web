@@ -978,6 +978,22 @@ export class PostgresProgramStore
     return mapSourceWorkspace(row, files.map(mapSourceFile));
   }
 
+  public async getGitHubInstallationForProject(
+    projectId: string,
+  ): Promise<string | null> {
+    const [row] = await this.sql<
+      { readonly github_installation_id: string | null }[]
+    >`
+      SELECT github_installation_id
+      FROM program_source_workspaces
+      WHERE project_id = ${projectId}
+        AND github_installation_id IS NOT NULL
+      ORDER BY updated_at DESC
+      LIMIT 1
+    `;
+    return row?.github_installation_id ?? null;
+  }
+
   public async upsertProgramSourceWorkspace(input: {
     readonly baseBranch?: string | null;
     readonly githubInstallationId?: string | null;

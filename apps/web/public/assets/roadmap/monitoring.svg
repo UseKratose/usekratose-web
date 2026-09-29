@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <rect width="900" height="600" fill="#151515"/>
+  <g stroke="#A68B6B" stroke-opacity=".16"><path d="M0 100h900M0 200h900M0 300h900M0 400h900M0 500h900M150 0v600M300 0v600M450 0v600M600 0v600M750 0v600"/></g>
+  <rect x="90" y="112" width="720" height="376" rx="28" fill="#1A1A1A" stroke="#A68B6B" stroke-opacity=".55" stroke-width="3"/>
+  <circle cx="182" cy="207" r="44" fill="#9B1C1C"/><path d="M162 207h40M182 187v40" stroke="#E7E2DC" stroke-width="8" stroke-linecap="round"/>
+  <text x="250" y="194" fill="#E7E2DC" font-family="monospace" font-size="28" font-weight="700">PROGRAM ACCOUNT</text>
+  <text x="250" y="232" fill="#A68B6B" font-family="monospace" font-size="19">FINALIZED · SLOT 504184158</text>
+  <path d="M170 350c70-88 120 88 190 0s120 88 190 0 120 88 190 0" fill="none" stroke="#9B1C1C" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#E7E2DC"><circle cx="170" cy="350" r="9"/><circle cx="360" cy="350" r="9"/><circle cx="550" cy="350" r="9"/><circle cx="740" cy="350" r="9"/></g>
+  <text x="176" y="430" fill="#A68B6B" font-family="monospace" font-size="18">WEBSOCKET SIGNAL + RECONCILIATION POLL</text>
+</svg>

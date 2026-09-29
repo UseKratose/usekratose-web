@@ -69,12 +69,14 @@ export function SignupForm() {
 
   async function handleOAuth(provider: "github" | "google") {
     const supabase = getSupabaseBrowserClient();
-    await supabase.auth.signInWithOAuth({
+    setError(null);
+    const { error: authError } = await supabase.auth.signInWithOAuth({
       provider,
       options: {
         redirectTo: `${window.location.origin}/auth/callback?redirect=/onboarding`,
       },
     });
+    if (authError !== null) setError(authError.message);
   }
 
   if (confirmationSent) {

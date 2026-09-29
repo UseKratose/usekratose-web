@@ -20,7 +20,7 @@ const Roadmap = (props: Props) => {
           text="Each shipped layer is validated before the next one becomes part of the product surface."
         />
 
-        <div className="relative grid gap-6 md:grid-cols-2 md:gap-4 md:pb-28">
+        <div className="relative grid gap-6 lg:grid-cols-2 lg:gap-5 lg:pb-28">
           {roadmap.map((item) => {
             const status = item.status === "done" ? "Done" : "In progress";
 
@@ -28,11 +28,11 @@ const Roadmap = (props: Props) => {
               <div
                 key={item.id}
                 className={cn(
-                  "md:flex even:md:translate-y-[7rem] p-0.25 rounded-[2.5rem]",
+                  "min-w-0 p-0.25 rounded-[2.5rem] lg:flex even:lg:translate-y-[7rem]",
                   item.colorful ? "bg-conic-gradient" : "bg-n-6"
                 )}
               >
-                <div className="relative overflow-hidden rounded-[2.4375rem] bg-n-8 p-8 xl:p-15">
+                <div className="relative w-full overflow-hidden rounded-[2.4375rem] bg-n-8 p-6 sm:p-8 xl:p-12">
                   <div className="absolute left-0 top-0 max-w-full">
                     <Image
                       src={images.grid}
@@ -43,7 +43,7 @@ const Roadmap = (props: Props) => {
                     />
                   </div>
                   <div className="relative z-1">
-                    <div className="mb-8 flex max-w-[27rem] items-center justify-between md:mb-20">
+                    <div className="mb-7 flex max-w-[27rem] items-center justify-between sm:mb-10 lg:mb-14">
                       <TagLine>{item.date}</TagLine>
 
                       <div className="flex items-center rounded bg-n-1 px-4 py-1 text-n-8">
@@ -58,10 +58,10 @@ const Roadmap = (props: Props) => {
                       </div>
                     </div>
 
-                    <div className="-mx-15 -my-10 mb-10">
+                    <div className="mb-8 aspect-[3/2] overflow-hidden rounded-2xl border border-n-6/40 bg-n-7/50 shadow-[0_28px_80px_rgba(0,0,0,0.42)]">
                       <Image
                         src={item.imageUrl}
-                        className="w-full"
+                        className="size-full object-cover"
                         width={630}
                         height={420}
                         alt={item.title}
@@ -80,7 +80,7 @@ const Roadmap = (props: Props) => {
         </div>
 
         <div className="mt-12 flex justify-center md:mt-15 xl:mt-20">
-          <Button href={`${process.env.NEXT_PUBLIC_DASHBOARD_URL ?? "http://localhost:3001"}/signup`}>Monitor a program</Button>
+          <Button href="/signup">Monitor a program</Button>
         </div>
       </div>
     </Section>

@@ -7,11 +7,11 @@ type Props = {};
 
 const PricingList = (props: Props) => {
   return (
-    <div className="flex gap-4 max-lg:flex-wrap">
+    <div className="grid gap-4 lg:grid-cols-3">
       {pricing.map((item) => (
         <div
           key={item.id}
-          className="h-full w-[19rem] rounded-[2rem] border border-n-6 bg-n-8 px-6 odd:my-4 odd:py-8 even:py-14 max-lg:w-full lg:w-auto [&>h4]:first:text-color-2 [&>h4]:last:text-color-3 [&>h4]:even:text-color-1"
+          className="h-full min-w-0 rounded-[2rem] border border-n-6 bg-n-8 px-6 py-8 lg:first:mt-4 lg:last:mt-4 lg:even:py-12 [&>h4]:first:text-color-2 [&>h4]:last:text-color-3 [&>h4]:even:text-color-1"
         >
           <h4 className="h4 mb-4">{item.title}</h4>
           <p className="body-2 mb-3 min-h-16 text-n-1/50">{item.description}</p>
@@ -23,7 +23,7 @@ const PricingList = (props: Props) => {
 
           <Button
             className="mb-6 w-full"
-            href={`${process.env.NEXT_PUBLIC_DASHBOARD_URL ?? "http://localhost:3001"}/signup`}
+            href="/signup"
             white
           >
             Start monitoring

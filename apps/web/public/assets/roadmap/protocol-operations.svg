@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <rect width="900" height="600" fill="#151515"/>
+  <g stroke="#A68B6B" stroke-opacity=".14"><path d="M0 120h900M0 240h900M0 360h900M0 480h900M150 0v600M300 0v600M450 0v600M600 0v600M750 0v600"/></g>
+  <circle cx="450" cy="300" r="92" fill="#9B1C1C"/><path d="M420 300h60M450 270v60" stroke="#E7E2DC" stroke-width="11" stroke-linecap="round"/>
+  <g fill="#1A1A1A" stroke="#A68B6B" stroke-width="3"><rect x="80" y="100" width="230" height="110" rx="22"/><rect x="590" y="100" width="230" height="110" rx="22"/><rect x="80" y="390" width="230" height="110" rx="22"/><rect x="590" y="390" width="230" height="110" rx="22"/></g>
+  <g stroke="#9B1C1C" stroke-width="7" fill="none"><path d="M310 155 385 235"/><path d="M590 155 515 235"/><path d="M310 445 385 365"/><path d="M590 445 515 365"/></g>
+  <g fill="#E7E2DC" font-family="monospace" font-size="22" font-weight="700"><text x="132" y="165">WEBHOOKS</text><text x="658" y="165">ALERTS</text><text x="155" y="455">API</text><text x="630" y="455">TEAMS</text></g>
+  <text x="325" y="430" fill="#A68B6B" font-family="monospace" font-size="19">SECURITY OPERATIONS</text>
+</svg>

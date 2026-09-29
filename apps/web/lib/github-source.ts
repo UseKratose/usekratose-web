@@ -3,7 +3,7 @@ import { createSign } from "node:crypto";
 import { applyGroundedPatches } from "@usekratose/explanations";
 
 const API_BASE = "https://api.github.com";
-const API_VERSION = process.env.GITHUB_API_VERSION?.trim() || "2026-03-10";
+const API_VERSION = process.env.GITHUB_API_VERSION?.trim() || "2022-11-28";
 const MAX_FILES = 40;
 const MAX_FILE_BYTES = 100_000;
 const MAX_TOTAL_BYTES = 750_000;
@@ -12,6 +12,12 @@ export interface GitHubRepositoryReference {
   readonly name: string;
   readonly owner: string;
   readonly url: string;
+}
+
+export interface GitHubRepositorySummary extends GitHubRepositoryReference {
+  readonly defaultBranch: string;
+  readonly private: boolean;
+  readonly updatedAt: string;
 }
 
 export interface RetrievedSourceFile {
@@ -121,6 +127,30 @@ export async function getGitHubInstallationToken(
     { method: "POST", token: githubAppJwt() },
   );
   return result.token;
+}
+
+export async function listGitHubInstallationRepositories(
+  installationId: string,
+): Promise<readonly GitHubRepositorySummary[]> {
+  const token = await getGitHubInstallationToken(installationId);
+  const result = await githubRequest<{
+    readonly repositories: readonly {
+      readonly default_branch: string;
+      readonly html_url: string;
+      readonly name: string;
+      readonly owner: { readonly login: string };
+      readonly private: boolean;
+      readonly updated_at: string;
+    }[];
+  }>("/installation/repositories?per_page=100", { token });
+  return result.repositories.map((repository) => ({
+    defaultBranch: repository.default_branch,
+    name: repository.name,
+    owner: repository.owner.login,
+    private: repository.private,
+    updatedAt: repository.updated_at,
+    url: repository.html_url,
+  }));
 }
 
 function sourceLanguage(path: string): string {

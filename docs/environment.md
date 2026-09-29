@@ -78,15 +78,16 @@ GITHUB_APP_ID=
 GITHUB_APP_SLUG=
 GITHUB_APP_PRIVATE_KEY=
 GITHUB_STATE_SECRET=
-GITHUB_API_VERSION=2026-03-10
+GITHUB_API_VERSION=2022-11-28
 ```
 
 Grant the GitHub App `Metadata: Read`, `Contents: Read and write`, and `Pull
-requests: Read and write`. Set its Setup URL to `/github/setup` on the dashboard
-origin, for example `http://localhost:3001/github/setup` locally. Store the PEM
-private key only in the marketing/API application. Escaped `\\n` line breaks are
-accepted for Vercel environment variables. `GITHUB_STATE_SECRET` must be a
-random server-only value of at least 32 characters.
+requests: Read and write`. Set its production Setup URL to
+`https://usekratose.vercel.app/dashboard/github/setup`; locally the dashboard
+route is `http://localhost:3001/github/setup`. Store the PEM private key only in
+the marketing/API application. Escaped `\\n` line breaks are accepted for Vercel
+environment variables. `GITHUB_STATE_SECRET` must be a random server-only value
+of at least 32 characters.
 
 Autofix never modifies the default branch or deploys a program. GitHub fixes are
 committed to a dedicated `usekratose/fix-*` branch and delivered as a pull
