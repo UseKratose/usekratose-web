@@ -219,7 +219,7 @@ const Navbar = () => {
         )}
 
         <Button
-          className="ml-auto lg:hidden"
+          className={cn("lg:hidden", user === null ? "ml-auto" : "ml-2")}
           px="px-3"
           onClick={toggleNavigation}
         >

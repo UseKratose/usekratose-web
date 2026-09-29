@@ -4,7 +4,6 @@ import { createServerClient } from "@supabase/ssr";
 import { isRouteWithin } from "./lib/navigation-security";
 
 const PROTECTED_ROUTES = ["/dashboard", "/monitor", "/onboarding"];
-const AUTH_ROUTES = ["/login", "/signup", "/forgot-password"];
 
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
@@ -48,14 +47,6 @@ export async function middleware(request: NextRequest) {
     const loginUrl = new URL("/login", request.url);
     loginUrl.searchParams.set("redirect", pathname);
     return NextResponse.redirect(loginUrl);
-  }
-
-  // Redirect authenticated users away from auth pages
-  const isAuthRoute = AUTH_ROUTES.some((route) =>
-    isRouteWithin(pathname, route),
-  );
-  if (isAuthRoute && user) {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
   return supabaseResponse;
