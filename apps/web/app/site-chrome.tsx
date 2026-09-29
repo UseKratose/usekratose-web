@@ -15,14 +15,8 @@ export function SiteChrome({
   readonly user: UserInfo | null;
 }) {
   const pathname = usePathname();
-  const isAuthenticationRoute = [
-    "/login",
-    "/signup",
-    "/forgot-password",
-    "/reset-password",
-  ].some((route) => pathname === route || pathname.startsWith(`${route}/`));
 
-  if (pathname === "/" || isAuthenticationRoute) {
+  if (pathname === "/") {
     return <>{children}</>;
   }
 

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { BrandLogo } from "@/components/brand-logo";
-
 export const metadata: Metadata = {
   description:
     "Sign in to UseKratose — continuous Solana security verification.",
@@ -17,15 +15,5 @@ export default function AuthLayout({
 }: {
   readonly children: React.ReactNode;
 }) {
-  return (
-    <div className="auth-shell">
-      <header className="auth-topbar">
-        <Link aria-label="UseKratose home" className="brand" href="/">
-          <BrandLogo />
-          <span>UseKratose</span>
-        </Link>
-      </header>
-      {children}
-    </div>
-  );
+  return <div className="auth-shell">{children}</div>;
 }
