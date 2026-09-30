@@ -5,10 +5,10 @@ import { BrandLogo } from "@/components/brand-logo";
 
 export const metadata: Metadata = {
   description:
-    "Sign in to UseKratose — continuous Solana security verification.",
+    "Sign in to UseKratose for continuous Solana security verification.",
   title: {
-    default: "Sign in — UseKratose",
-    template: "%s — UseKratose",
+    default: "Sign in | UseKratose",
+    template: "%s | UseKratose",
   },
 };
 
