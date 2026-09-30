@@ -215,13 +215,18 @@ const Navbar = () => {
           </div>
         )}
 
-        <Button
-          className="ml-auto lg:hidden"
-          px="px-3"
+        <button
+          aria-expanded={openNavigation}
+          aria-label="Toggle navigation menu"
+          className={cn(
+            "ml-2 grid size-11 place-items-center border-0 bg-transparent p-0 text-n-1 lg:hidden",
+            user === null && "ml-auto",
+          )}
           onClick={toggleNavigation}
+          type="button"
         >
           <MenuSvg openNavigation={openNavigation} />
-        </Button>
+        </button>
       </div>
     </div>
   );
