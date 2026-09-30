@@ -41,9 +41,9 @@ export default function Footer() {
               <span>UseKratose</span>
             </Link>
             <p>
-              Continuous deployment-security evidence for Solana
-              programs—deterministic, explainable, and grounded in finalized
-              on-chain state.
+              Continuous deployment security evidence for Solana programs.
+              Deterministic, explainable, and grounded in finalized onchain
+              state.
             </p>
           </div>
 

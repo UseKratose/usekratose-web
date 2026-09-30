@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     ],
     locale: "en_US",
     siteName: "UseKratose",
-    title: "UseKratose — Continuous Solana Program Security",
+    title: "UseKratose | Continuous Solana Program Security",
     type: "website",
     url: "/",
   },
@@ -80,15 +80,15 @@ export const metadata: Metadata = {
     index: true,
   },
   title: {
-    default: "UseKratose — Continuous Solana Program Security",
-    template: "%s — UseKratose",
+    default: "UseKratose | Continuous Solana Program Security",
+    template: "%s | UseKratose",
   },
   twitter: {
     card: "summary_large_image",
     description:
       "Certificate transparency and Git-style security diffs for deployed Solana programs.",
     images: ["/opengraph-image"],
-    title: "UseKratose — Continuous Solana Program Security",
+    title: "UseKratose | Continuous Solana Program Security",
   },
 };
 
