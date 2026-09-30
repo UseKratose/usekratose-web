@@ -6,8 +6,8 @@
     "node": ">=22.0.0"
   },
   "scripts": {
-    "build": "pnpm --filter @usekratose/web build",
-    "dev": "pnpm --filter @usekratose/web dev",
+    "build": "node api.js && pnpm --filter @usekratose/web build",
+    "dev": "node api.js && pnpm --filter @usekratose/web dev",
     "test": "vitest run",
     "typecheck": "pnpm -r --if-present typecheck"
   },

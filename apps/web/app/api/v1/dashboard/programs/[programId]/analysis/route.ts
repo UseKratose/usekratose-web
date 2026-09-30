@@ -48,6 +48,7 @@ export async function POST(
   request: Request,
   context: { params: Promise<{ programId: string }> },
 ): Promise<Response> {
+  const { programId } = await context.params;
   const user = await authenticateDashboardRequest(request);
   if (user === null) return dashboardUnauthorized();
   const token = bearerToken(request);
@@ -64,7 +65,6 @@ export async function POST(
   }
 
   try {
-    const { programId } = await context.params;
     const project = await database.store.getProjectForUser(user.id);
     if (project === null) {
       return Response.json(
@@ -179,6 +179,10 @@ export async function POST(
   } catch (error) {
     const message =
       error instanceof Error ? error.message : "AI analysis failed";
+    console.error("[program-analysis] failed", {
+      error: message,
+      programId,
+    });
     return Response.json(
       { error: { code: "AI_ANALYSIS_FAILED", message } },
       { status: 502 },

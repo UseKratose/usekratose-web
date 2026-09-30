@@ -294,7 +294,7 @@ function groundProgramAnalysis(
 }
 
 export class GeminiProgramAnalysisProvider {
-  public static readonly promptVersion = "2";
+  public static readonly promptVersion = "3";
   public readonly name = "gemini";
 
   public constructor(
@@ -317,13 +317,14 @@ export class GeminiProgramAnalysisProvider {
             },
           ],
           generationConfig: {
-            maxOutputTokens: 4096,
+            maxOutputTokens: 16_384,
             responseFormat: {
               text: {
                 mimeType: "APPLICATION_JSON",
                 schema: programAnalysisJsonSchema,
               },
             },
+            thinkingConfig: { thinkingLevel: "minimal" },
             temperature: 0.2,
           },
           systemInstruction: {
@@ -366,13 +367,22 @@ export class GeminiProgramAnalysisProvider {
         readonly content?: {
           readonly parts?: readonly { readonly text?: string }[];
         };
+        readonly finishReason?: string;
       }[];
+      readonly promptFeedback?: { readonly blockReason?: string };
     };
     const content = result.candidates?.[0]?.content?.parts
       ?.map((part) => part.text ?? "")
       .join("");
     if (content === undefined || content.trim() === "") {
-      throw new Error("Gemini returned no analysis");
+      const finishReason = result.candidates?.[0]?.finishReason;
+      const blockReason = result.promptFeedback?.blockReason;
+      const reason = finishReason ?? blockReason;
+      throw new Error(
+        reason === undefined
+          ? "Gemini returned no analysis"
+          : `Gemini returned no analysis (${reason})`,
+      );
     }
     const proposed = proposedProgramAnalysisSchema.parse(JSON.parse(content));
     return groundProgramAnalysis(proposed, evidence);
