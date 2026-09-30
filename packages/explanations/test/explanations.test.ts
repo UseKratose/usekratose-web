@@ -274,9 +274,11 @@ describe("Milestone 7 explanation boundary", () => {
     expect(requestHeaders?.get("x-goog-api-key")).toBe("test-api-key");
     expect(requestBody).toMatchObject({
       generationConfig: {
+        maxOutputTokens: 16_384,
         responseFormat: {
           text: { mimeType: "APPLICATION_JSON" },
         },
+        thinkingConfig: { thinkingLevel: "minimal" },
         temperature: 0.2,
       },
     });
@@ -286,6 +288,26 @@ describe("Milestone 7 explanation boundary", () => {
     expect(JSON.stringify(requestBody)).not.toContain("maxItems");
     expect(JSON.stringify(requestBody)).not.toContain("minItems");
     expect(JSON.stringify(requestBody)).not.toContain("test-api-key");
+  });
+
+  it("reports the provider finish reason when analysis output is empty", async () => {
+    const provider = new GeminiProgramAnalysisProvider(
+      "test-api-key",
+      "gemini-fixture",
+      async () =>
+        Response.json({
+          candidates: [{ finishReason: "MAX_TOKENS" }],
+        }),
+    );
+
+    await expect(
+      provider.analyze({
+        currentSnapshot: {},
+        events: [],
+        program: {},
+        snapshots: [],
+      }),
+    ).rejects.toThrow("Gemini returned no analysis (MAX_TOKENS)");
   });
 
   it("applies only an unambiguous exact replacement", () => {
